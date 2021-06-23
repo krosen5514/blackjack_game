@@ -7,6 +7,9 @@ print("----------------------------------------")
 print()
 
 from pandas import read_csv
+import random
+from pprint import pprint
+# import time
 
 while True:
     deck_count = input("How many decks would you like to play with (Min=1, Max=6): ")
@@ -22,16 +25,12 @@ active_deck = deck_df.to_dict("records")
 
 # ROUND 1 | ROUND 1 | ROUND 1 | ROUND 1 | ROUND 1 | ROUND 1 | ROUND 1 | ROUND 1 | ROUND 1 | 
 
-import random
-from pprint import pprint
-
 # Player is delt first card
 print()
 player_card1 = random.choice(active_deck)
 active_deck = [i for i in active_deck if not (i["id"] == player_card1["id"])]
 print(f"       Draw 1: {player_card1['card']} of {player_card1['suit']}")
 # print("Cards remaining in deck:",len(active_deck))
-
 
 # Player is delt second card
 player_card2 = random.choice(active_deck)
@@ -45,6 +44,7 @@ print()
 
 if player_score == 21:
     print('Instant blackjack, you WIN!')
+    print()
     exit
 
 
@@ -61,10 +61,10 @@ dealer_score = (dealer_card1['value'] + dealer_card2['value'])
 print(f" Dealer Total: {dealer_card1['value']} + ??? = ???")
 print()
 
-
 # Dealer gets blackjack
 if dealer_score == 21:
     print('Dealer has Blackjack... sorry...')
+    print()
     exit
 
 
@@ -93,7 +93,8 @@ while True:
             break
 
     elif player_action.upper() == ("STAY"):
-        print(f"Dealer Draw 2: FACED DOWN CARD IS FLIPPING UP ...")
+        print(f"           ... DEALER'S FACED DOWN CARD IS FLIPPING UP ...")
+        print()
         print(f"Dealer Draw 2: {dealer_card2['card']} of {dealer_card2['suit']}")
         print(f" Dealer Total: {dealer_card1['value']} + {dealer_card2['value']} = {dealer_score}")
         print()
@@ -113,20 +114,24 @@ while True:
 
             elif dealer_score > 21:
                 print(f"Dealer BUSTED - you WIN!")
+                print()
                 break
 
             else:
                 if player_score > dealer_score:
                     print(f"{player_score} is better than {dealer_score} - you WIN this hand!")
                     print("Congratulations! Keep the winning streak going!")
+                    print()
                     break
                 elif player_score == dealer_score:
                     print(f"{player_score} = {dealer_score} - PUSH.")
                     print("Feel free to try again.")
+                    print()
                     break
                 else:
                     print(f"{player_score} is worse than {dealer_score} - you LOSE this hand.")
                     print("Sorry! Please try again.")
+                    print()
                     break
         
         break
