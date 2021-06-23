@@ -1,7 +1,10 @@
-print('Welcome to Blackjack, thanks for playing')
-print('----------------------------------------')
-print('Shuffle up and deal!')
-print('----------------------------------------')
+print()
+print("----------------------------------------")
+print("Welcome to Blackjack")
+print("----------------------------------------")
+print("Shuffle up and deal!")
+print("----------------------------------------")
+print()
 
 #using an API get request to import 6 decks of cards
 #import requests
@@ -85,47 +88,33 @@ deck = [
      {"id" : 52, "suit": 'spades', "card": 'King', "value": 10 }
 ]
 
-import random
-from pprint import pprint
 
 active_deck = deck
-# pprint(len(deck2))
-
-# last_draw = random.choice(deck2)
-# deck2 = [i for i in deck2 if not (i["id"] == last_draw["id"])]
-# pprint(len(deck2))
-
 
 
 # ROUND 1 | ROUND 1 | ROUND 1 | ROUND 1 | ROUND 1 | ROUND 1 | ROUND 1 | ROUND 1 | ROUND 1 | 
 
-#Player drawing cards
-# last_draw = random.choice(deck2)
-# deck2 = [i for i in deck2 if not (i["id"] == last_draw["id"])]
-# player_hand = last_draw
-# player_score = last_draw["value"]
+import random
+from pprint import pprint
 
-
-player_card1 = random.choice(deck)
+# Player is delt first card
+player_card1 = random.choice(active_deck)
 active_deck = [i for i in active_deck if not (i["id"] == player_card1["id"])]
-
-player_card2 = random.choice(deck)
-active_deck = [i for i in active_deck if not (i["id"] == player_card2["id"])]
-
-
 print(f"       Draw 1: {player_card1['card']} of {player_card1['suit']}")
+
+# Player is delt second card
+player_card2 = random.choice(active_deck)
+active_deck = [i for i in active_deck if not (i["id"] == player_card2["id"])]
 print(f"       Draw 2: {player_card2['card']} of {player_card2['suit']}")
 
-#Getting an initial score for the player
+# Player initial score
 player_score = (player_card1["value"] + player_card2["value"])
-print(f"Current total: {player_score}")
+print(f"        Total: {player_score}")
 print()
 
-
-# Giving the player blackjack
-# if player_score == 21:
-#     print('Blackjack! Nice job')
-#     exit
+if player_score == 21:
+    print('Instant blackjack, you WIN!')
+    exit
 
 
 # Giving the dealer cards
@@ -135,16 +124,16 @@ active_deck = [i for i in active_deck if not (i["id"] == dealer_card1["id"])]
 dealer_card2 = random.choice(deck)
 active_deck = [i for i in active_deck if not (i["id"] == dealer_card2["id"])]
 
-print(f"The Dealer Drew: {dealer_card1['card']} of {dealer_card1['suit']}")
+print(f"  Dealer Draw: {dealer_card1['card']} of {dealer_card1['suit']}")
 dealer_score = (dealer_card1['value']+dealer_card2['value'])
-print(f"   Dealer Total: {dealer_card1['value']} + ???")
+print(f" Dealer Total: {dealer_card1['value']} + ???")
 print()
 
 
 # Dealer gets blackjack
-# if dealer_score == 21:
-#     print('Dealer has Blackjack... sorry...')
-#     exit
+if dealer_score == 21:
+    print('Dealer has Blackjack... sorry...')
+    exit
 
 
 # DECISION ROUNDS | DECISION ROUNDS | DECISION ROUNDS | DECISION ROUNDS | DECISION ROUNDS |
@@ -153,8 +142,8 @@ print()
 round = 2
 
 while True:
-    player_action = input("Would you like to HIT or STAY? ")
-
+    player_action = input("HIT or STAY? ")
+    print()
     if player_action.upper() == ("HIT"):
         
         round += 1
@@ -163,15 +152,19 @@ while True:
 
         print(f"       Draw {round}: {player_card['card']} of {player_card['suit']}")
         player_score += player_card['value']
-        print(f"      Current Total: {player_score}")
+        print(f"        Total: {player_score}")
         print()
+
+        if player_score > 21:
+            print("BUST! SORRY!")
+            break
 
     elif player_action.upper() == ("STAY"):
         print("Game ends")
         break
 
     else:
-        print("Invalid input, try again!")
+        print("Invalid input, please enter 'HIT' or 'STAY'")
 
 
 
