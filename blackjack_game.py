@@ -137,7 +137,7 @@ active_deck = [i for i in active_deck if not (i["id"] == dealer_card2["id"])]
 
 print(f"The Dealer Drew: {dealer_card1['card']} of {dealer_card1['suit']}")
 dealer_score = (dealer_card1['value']+dealer_card2['value'])
-print(f"   Dealer Total: {dealer_card1['value']} + ?")
+print(f"   Dealer Total: {dealer_card1['value']} + ???")
 print()
 
 
