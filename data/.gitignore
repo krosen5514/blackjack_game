@@ -3,3 +3,9 @@
 
 # but don't ignore this ".gitignore" file:
 !.gitignore
+!1decks.csv
+!2decks.csv
+!3decks.csv
+!4decks.csv
+!5decks.csv
+!6decks.csv
