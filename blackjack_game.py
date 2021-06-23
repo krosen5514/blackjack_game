@@ -4,23 +4,31 @@ print('Shuffle up and deal!')
 print('----------------------------------------')
 
 #using an API get request to import 6 decks of cards
-import requests
-shuffleurl='https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=6'
-resp_shuffle=requests.get(shuffleurl)
-deck=resp_shuffle.json()
-deck_id= deck["deck_id"]
-print(deck_id)
+#import requests
+#shuffleurl='https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=6'
+#resp_shuffle=requests.get(shuffleurl)
+#deck=resp_shuffle.json()
+#deck_id= deck["deck_id"]
 
 #using a post API to draw from the deck
-drawurl= f'https://deckofcardsapi.com/api/deck/{deck_id}/draw/?count=3'
-resp_draw=requests.post(drawurl)
-print(resp_draw.status_code)
-cards_drawn=resp_draw.json()
-print(cards_drawn)
+#drawurl= f'https://deckofcardsapi.com/api/deck/{deck_id}/draw/?count={2}'
+#resp_draw=requests.post(drawurl)
+#print(resp_draw.status_code)
+#cards_drawn=resp_draw.json()
+#print(cards_drawn)
+
+#assigning a player and a dealer
+#player()
+#dealer()
+
+#if cards_drawn["cards"][0]["value"]:
+    #print(cards_drawn["cards"][0]["value"])
+
+#inputdict[key] = newvalue
 
 #or using a dictionary defined within the code
 deck=[
-    {"suit": 'clubs', "card": 'Ace',"value": [ 1, 10 ]},
+    {"suit": 'clubs', "card": 'Ace',"value": [ 1, 11 ]},
     {"suit": 'clubs', "card": '2', "value": 2 },
     {"suit": 'clubs', "card": '3', "value": 3 },
     {"suit": 'clubs', "card": '4', "value": 4 },
@@ -34,7 +42,7 @@ deck=[
     {"suit": 'clubs', "card": 'Queen', "value": 10 },
     {"suit": 'clubs', "card": 'King', "value": 10 },
 
-     {"suit": 'diamonds', "card": 'Ace', "value": [ 1, 10 ] },
+     {"suit": 'diamonds', "card": 'Ace', "value": [ 1, 11 ] },
      {"suit": 'diamonds', "card": '2', "value": 2 },
      {"suit": 'diamonds', "card": '3', "value": 3 },
      {"suit": 'diamonds', "card": '4', "value": 4 },
@@ -48,7 +56,7 @@ deck=[
      {"suit": 'diamonds', "card": 'Queen', "value": 10 },
      {"suit": 'diamonds', "card": 'King', "value": 10 },
 
-     {"suit": 'hearts', "card": 'Ace', "value": [ 1, 10 ] },
+     {"suit": 'hearts', "card": 'Ace', "value": [ 1, 11 ] },
      {"suit": 'hearts', "card": '2', "value": 2 },
      {"suit": 'hearts', "card": '3', "value": 3 },
      {"suit": 'hearts', "card": '4', "value": 4 },
@@ -62,7 +70,7 @@ deck=[
      {"suit": 'hearts', "card": 'Queen', "value": 10 },
      {"suit": 'hearts', "card": 'King', "value": 10 },
 
-     {"suit": 'spades', "card": 'Ace', "value": [ 1, 10 ] },
+     {"suit": 'spades', "card": 'Ace', "value": [ 1, 11 ] },
      {"suit": 'spades', "card": '2', "value": 2 },
      {"suit": 'spades', "card": '3', "value": 3 },
      {"suit": 'spades', "card": '4', "value": 4 },
@@ -76,3 +84,14 @@ deck=[
      {"suit": 'spades', "card": 'Queen', "value": 10 },
      {"suit": 'spades', "card": 'King', "value": 10 }
 ]
+import random
+#Point values dict
+#player_hand=()
+
+player_card1=random.choice(deck)
+player_card2=random.choice(deck)
+print('You Drew:', player_card1["card"], "of", player_card1["suit"], "and", player_card2["card"], "of", player_card2["suit"])
+
+player_score1=0
+player_score1=player_card1["value"]+player_card2["value"]
+print(player_score1)
