@@ -18,7 +18,7 @@
 
 # Installation
 
-1. Fork, download, or clone this [remote repository](https://github.com/ts2905/shopping-cart) under your own control.
+1. Fork, download, or clone this [remote repository](https://github.com/krosen5514/blackjack_game) under your own control.
 
 2. Use your preferred shell and navigate to the repository.
 
