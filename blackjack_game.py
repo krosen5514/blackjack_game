@@ -11,31 +11,42 @@ import random
 from pprint import pprint
 # import time
 
+
+# NEW FROM PROFESSOR
+def draw_a_card(deck):
+    card = random.choice(deck)
+    deck = [i for i in deck if not (i["id"] == card["id"])]
+    return card, deck
+
+
+valid_decks = ["1", "2", "3", "4", "5", "6"]
+
 while True:
     deck_count = input("How many decks would you like to play with (Min=1, Max=6): ")
-    if deck_count == "1" or "2" or "3" or "4" or "5" or "6":
+    if deck_count in valid_decks:
+    # if deck_count == "1" or "2" or "3" or "4" or "5" or "6":
         filepath_csv = f"data/{deck_count}decks.csv"
-        # print(filepath_csv)
         break
     else:
         print("Invalid input, please enter 1, 2, 3, 4, 5, or 6")
-    
+
+
 deck_df = read_csv(filepath_csv)
 active_deck = deck_df.to_dict("records")
+
+
 
 # ROUND 1 | ROUND 1 | ROUND 1 | ROUND 1 | ROUND 1 | ROUND 1 | ROUND 1 | ROUND 1 | ROUND 1 | 
 
 # Player is delt first card
 print()
-player_card1 = random.choice(active_deck)
-active_deck = [i for i in active_deck if not (i["id"] == player_card1["id"])]
+player_card1, active_deck = draw_a_card(active_deck)
 print(f"       Draw 1: {player_card1['card']} of {player_card1['suit']}")
-# print("Cards remaining in deck:",len(active_deck))
 
 # Player is delt second card
-player_card2 = random.choice(active_deck)
-active_deck = [i for i in active_deck if not (i["id"] == player_card2["id"])]
+player_card2, active_deck = draw_a_card(active_deck)
 print(f"       Draw 2: {player_card2['card']} of {player_card2['suit']}")
+
 
 # Player initial score
 player_score = (player_card1["value"] + player_card2["value"])
@@ -45,15 +56,12 @@ print()
 if player_score == 21:
     print('Instant blackjack, you WIN!')
     print()
-    exit
+    exit()
 
 
 # Giving the dealer cards
-dealer_card1 = random.choice(active_deck)
-active_deck = [i for i in active_deck if not (i["id"] == dealer_card1["id"])]
-
-dealer_card2 = random.choice(active_deck)
-active_deck = [i for i in active_deck if not (i["id"] == dealer_card2["id"])]
+dealer_card1, active_deck = draw_a_card(active_deck)
+dealer_card2, active_deck = draw_a_card(active_deck)
 
 print(f"Dealer Draw 1: {dealer_card1['card']} of {dealer_card1['suit']}")
 print(f"Dealer Draw 2: CARD IS FACED DOWN")
@@ -65,7 +73,7 @@ print()
 if dealer_score == 21:
     print('Dealer has Blackjack... sorry...')
     print()
-    exit
+    exit()
 
 
 # DECISION ROUNDS | DECISION ROUNDS | DECISION ROUNDS | DECISION ROUNDS | DECISION ROUNDS |
@@ -79,9 +87,8 @@ while True:
     print()
     if player_action.upper() == ("HIT"):
         
-        round_player += 1
-        player_card = random.choice(active_deck)
-        active_deck = [i for i in active_deck if not (i["id"] == player_card["id"])]
+        round_player += 1        
+        player_card, active_deck = draw_a_card(active_deck)
 
         print(f"       Draw {round_player}: {player_card['card']} of {player_card['suit']}")
         player_score += player_card['value']
@@ -103,9 +110,8 @@ while True:
             if dealer_score < 17:
                 print(f"The dealer must reach a soft 17.")
                 
-                round_dealer += 1
-                dealer_card = random.choice(active_deck)
-                active_deck = [i for i in active_deck if not (i["id"] == dealer_card["id"])]
+                round_dealer += 1               
+                dealer_card, active_deck = draw_a_card(active_deck)
                 print(f"Dealer Draw {round_dealer}: {dealer_card['card']} of {dealer_card['suit']}")
                 dealer_score += dealer_card['value']
                 print(f" Dealer Total: {dealer_score}")
