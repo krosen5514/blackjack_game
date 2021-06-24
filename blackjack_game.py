@@ -11,6 +11,13 @@ import random
 from pprint import pprint
 # import time
 
+
+def draw_a_card(deck):
+    card = random.choice(deck)
+    deck = [i for i in deck if not (i["id"] == card["id"])]
+    return card, deck
+
+
 while True:
     deck_count = input("How many decks would you like to play with (Min=1, Max=6): ")
     if deck_count == "1" or "2" or "3" or "4" or "5" or "6":
@@ -22,6 +29,19 @@ while True:
     
 deck_df = read_csv(filepath_csv)
 active_deck = deck_df.to_dict("records")
+
+
+card1, active_deck = draw_a_card(active_deck)
+print(card1)
+print(len(active_deck))
+
+card2, active_deck = draw_a_card(active_deck)
+print(card2)
+print(len(active_deck))
+
+exit()
+
+
 
 # ROUND 1 | ROUND 1 | ROUND 1 | ROUND 1 | ROUND 1 | ROUND 1 | ROUND 1 | ROUND 1 | ROUND 1 | 
 
