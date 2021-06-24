@@ -11,13 +11,10 @@ import random
 from pprint import pprint
 # import time
 
-
-# NEW FROM PROFESSOR
 def draw_a_card(deck):
     card = random.choice(deck)
     deck = [i for i in deck if not (i["id"] == card["id"])]
     return card, deck
-
 
 valid_decks = ["1", "2", "3", "4", "5", "6"]
 
@@ -33,7 +30,6 @@ while True:
 
 deck_df = read_csv(filepath_csv)
 active_deck = deck_df.to_dict("records")
-
 
 
 # ROUND 1 | ROUND 1 | ROUND 1 | ROUND 1 | ROUND 1 | ROUND 1 | ROUND 1 | ROUND 1 | ROUND 1 | 
