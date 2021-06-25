@@ -165,17 +165,18 @@ while True:
         
         
         
-        if play_again.upper() == "Y" and len(active_deck > 22):
+        if play_again.upper() == "Y" and (len(active_deck) > 22):
             print()
             print("Good move - the deck is hot!")
             break            
-        elif play_again.upper() == "Y" and len(active_deck < 23):
+        elif play_again.upper() == "Y" and (len(active_deck) < 23):
             print()
             print("The dealer is runing low on cards and they need to reshuffle the deck")
             print("Please play again")
             exit()
         elif play_again.upper() == "N":
             print("Thanks for playing.")
+            print()
             exit()
         else:
             print("Sorry invlaid input. Please enter 'Y' or 'N': ")
