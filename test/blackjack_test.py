@@ -14,10 +14,8 @@ def test_draw_a_card():
         {10,"clubs",10,10,1}
     ]
 
-    #deck is list of dictionaries
-    #invoke draw card function 
 
-card , active_deck = draw_a_card(deck)
+card , deck = draw_a_card(deck)
 
 #assert that the card is a dectionary and that it has certain keys we expect it to have
 #count the number of remaining cards in active deck.
