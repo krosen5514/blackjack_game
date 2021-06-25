@@ -64,11 +64,13 @@ while True:
         while True:
             walk = input("Would you like to walk (Y or N)? ")
             print()
-            if walk == "Y":
+            if walk.upper == "Y":
                 print("Good move.")
                 exit()
-            elif walk == "N":
+            elif walk.upper == "N":
                 break
+            else:
+                print("Sorry invlaid input. Please enter 'Y' or 'N': ")
 
 
     # Giving the dealer cards

@@ -1,3 +1,2 @@
-
-pandas
+random
 python-dotenv
