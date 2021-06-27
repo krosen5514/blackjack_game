@@ -1,6 +1,5 @@
 from app.blackjack_game import draw_a_card
 
-
 def test_draw_a_card():
     
     deck = [
