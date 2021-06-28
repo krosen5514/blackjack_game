@@ -41,5 +41,5 @@ PLAYER_NAME=
 6. Usage
 * Run the game script
 ```py
-python blackjack_game.py
+python app/blackjack_game.py
 ```
