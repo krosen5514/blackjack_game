@@ -8,13 +8,11 @@
 + Python 3.8+
 + Pip
 
-# Needed 3rd Party Packages
+# Needed Packages and Modules
 + python-dotenv
 + pandas
-
-# Needed Modules
-+ import os
-+ from pandas import read_csv
++ random
++ os
 
 # Installation
 
